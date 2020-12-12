@@ -611,6 +611,7 @@ endif
 fpic=
 else
 CFLAGS += -D__LIBRETRO__
+CFLAGS += -DNO_NETWORK
 endif
 endif
 
