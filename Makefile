@@ -580,6 +580,7 @@ ifneq (,$(findstring msvc,$(platform)))
  OBJOUT = -Fo
 else
  OBJOUT = -o
+ CFLAGS += -O3 -mtune=core2 -march=core2
 endif
 
 include Makefile.common
