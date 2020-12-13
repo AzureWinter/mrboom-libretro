@@ -1,0 +1,82 @@
+#
+# Builds project files
+#
+
+
+clone_depth: 50
+
+
+
+environment:
+
+  GIT_SCRIPT: SiennaSilver
+
+
+
+  COMPILER: gcc-win32-posix
+
+  PROJECT: mrboom
+
+  SOLUTION: makefile
+
+  CONFIGURATION: libretro
+
+
+
+  matrix:
+    - Platform: windows_desktop_x86
+    # - Platform: windows_desktop_x64
+
+
+
+artifacts:
+  - path: '**\*libretro.dll'
+
+
+
+
+build_script:
+
+  - ps: |
+
+      if (${env:GIT_SCRIPT} -Eq $Null) {
+        $env:GIT_SCRIPT = $env:APPVEYOR_REPO_COMMIT_AUTHOR
+      }
+
+
+
+      ##################################
+
+
+
+      try {
+        iex ((New-Object System.Net.WebClient).DownloadString("https://github.com/${env:GIT_SCRIPT}/appveyor-ci/raw/main/script/script.ps1"))
+
+        iex ((New-Object System.Net.WebClient).DownloadString("${env:GIT_SCRIPT}/build/build.ps1"))
+      }
+
+      catch {
+        throw "$_"
+      }
+
+
+
+      ##################################
+
+
+
+  - ps: |
+      git_merge gcc_core2
+      git_merge disable_stats
+      git_merge pause_button
+      git_merge color_expansion
+
+      cd libretro
+      cd ..
+#      git_merge volume_logger
+#      git_resolve color_correction libretro.cpp both
+#      git_resolve channel_volume libretro.cpp both
+
+
+  - cmd: |
+      cmd.exe /c %Build%
