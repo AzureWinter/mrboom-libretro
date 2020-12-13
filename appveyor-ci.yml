@@ -69,7 +69,6 @@ build_script:
       git_merge gcc_core2
       git_merge disable_stats
       git_merge pause_button
-      git_merge color_expansion
 
       cd libretro
       cd ..
