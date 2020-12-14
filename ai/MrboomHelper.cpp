@@ -653,3 +653,11 @@ int numWinners()
    }
    return total;
 }
+
+void setMenuTheme(int theme)
+{
+}
+
+int getMenuTheme()
+{
+}
