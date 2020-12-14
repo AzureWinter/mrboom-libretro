@@ -68,8 +68,11 @@ build_script:
   - ps: |
       git_merge gcc_core2
       git_merge disable_stats
-      git_merge pause_button
       git_merge samples
+
+      git_merge pause_button
+      git_merge change_rules
+      git_merge rounds_limit
 
       cd libretro
       cd ..
