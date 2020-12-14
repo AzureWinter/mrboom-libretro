@@ -3211,8 +3211,6 @@ db vgaRamPaddingAfter[VGARAM_SIZE];
 char *path;
 void *ramVideoPointer;
 void *ramCopyPointer;
-  
-db roundsLimit;
 } Memory;
 #pragma pack(pop)
 extern Memory m;
@@ -3608,6 +3606,7 @@ void fixBigEndian(void *data);
 bool sameTeamWin(int player);
 void addTeamWin();
 int numWinners();
+int getRoundsLimit();
 
 #ifdef __cplusplus
 }
