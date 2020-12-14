@@ -807,7 +807,19 @@ void mrboom_sound(void)
                index = 1;
             } 
          } else {
-            musics_index = (musics_index + 1) % (NB_CHIPTUNES);
+            //musics_index = (musics_index + 1) % (NB_CHIPTUNES);
+			   switch (currentLevel) {
+			   case 0: musics_index = 0; break;
+			   case 1: musics_index = 1; break;
+			   case 2: musics_index = 2; break;
+			   case 3: musics_index = 3; break;
+			   case 4: musics_index = 4; break;
+			   case 5: musics_index = 5; break;
+			   case 6: musics_index = 6; break;
+			   case 7: musics_index = 3; break;
+			   }
+			   musics_index += 2;
+
             if (musics_index < 2)
             {
                musics_index = 2;
