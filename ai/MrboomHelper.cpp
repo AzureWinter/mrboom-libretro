@@ -615,12 +615,7 @@ void addTeamWin()
 }
 
 bool isXmasPeriod() {
-   static bool res = false;
-   static bool init = false;
-   if (init) {
-      return res;
-   }
-   init = true;
+   bool res = false;
 
    time_t rawtime;
    struct tm* timeinfo;
@@ -654,10 +649,13 @@ int numWinners()
    return total;
 }
 
+static int menu_theme;
 void setMenuTheme(int theme)
 {
+   menu_theme = theme;
 }
 
 int getMenuTheme()
 {
+   return menu_theme;
 }
