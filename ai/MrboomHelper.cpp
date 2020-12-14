@@ -620,6 +620,9 @@ bool isXmasPeriod() {
    time_t rawtime;
    struct tm* timeinfo;
 
+   if (getMenuTheme() == 1) return false;
+   if (getMenuTheme() == 2) return true;
+
    rawtime = time(NULL);
 #ifdef __LIBRETRO__
    struct tm timeinfo_retro;
