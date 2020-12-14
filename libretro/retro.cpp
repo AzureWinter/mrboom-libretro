@@ -576,7 +576,7 @@ static void check_variables(void)
       {
          setMenuTheme(menu_theme);
       }
-   }
+   } // var_mrboom_menutheme
 }
 
 void retro_run(void)
