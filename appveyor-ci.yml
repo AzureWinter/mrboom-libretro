@@ -74,9 +74,8 @@ build_script:
       git_merge change_rules
 
       git_merge rounds_limit
-      git_edit menu_theme libretro\retro.cpp both
-      git_edit menu_theme ai\MrboomHelper.cpp both
-      git_resolve menu_theme makefile both
+      git_resolve menu_theme libretro/retro.cpp both
+      git_modify ai/MrboomHelper.cpp both
 
 
   - cmd: |
