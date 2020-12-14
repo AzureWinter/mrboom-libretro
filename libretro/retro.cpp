@@ -568,7 +568,7 @@ static void check_variables(void)
       {
          setRoundsLimit(val);
       }
-   }
+   } // var_mrboom_roundslimit
 }
 
 void retro_run(void)
