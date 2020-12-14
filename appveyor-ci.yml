@@ -74,13 +74,12 @@ build_script:
       git_merge change_rules
 
       git_merge rounds_limit
-      git_merge menu_theme
-
       cd libretro
+         git_resolve menu_theme retro.cpp both
       cd ..
-#      git_merge volume_logger
-#      git_resolve color_correction libretro.cpp both
-#      git_resolve channel_volume libretro.cpp both
+      cd ai
+         git_resolve menu_theme MrboomHelper.cpp both
+      cd ..
 
 
   - cmd: |
