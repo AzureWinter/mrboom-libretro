@@ -814,7 +814,7 @@ void mrboom_sound(void)
             switch (currentLevel) {
             case 0: musics_index = 0; break;
             case 1: musics_index = 1; break;
-			case 2: musics_index = 2; break;
+            case 2: musics_index = 2; break;
             case 3: musics_index = 3; break;
             case 4: musics_index = 4; break;
             case 5: musics_index = 5; break;
