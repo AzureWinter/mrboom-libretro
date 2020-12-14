@@ -1286,13 +1286,13 @@ static void mrboom_hotpatch()
    if (current_menu != getMenuTheme()) {
       current_menu = getMenuTheme();
 
-      if ((current_menu == 1) || (current_menu == 0 && !isXmasPeriod())) {
-         memcpy(m.pal, normal_menu_pal, 256*3);
-         memcpy(m.heap + 0x3e800, normal_menu_raw, 320*200);
-      }
-      if ((current_menu == 2) || (current_menu == 0 && isXmasPeriod())) {
+      if (isXmasPeriod()) {
          memcpy(m.pal, Menu_christmas, 256*3);
          memcpy(m.heap + 0x3e800, Menu_christmas+256*3, 320*200);
+      }
+      else {
+         memcpy(m.pal, normal_menu_pal, 256*3);
+         memcpy(m.heap + 0x3e800, normal_menu_raw, 320*200);
       }
    }
 }
