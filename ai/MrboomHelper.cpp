@@ -653,9 +653,9 @@ static int menu_theme;
 void setMenuTheme(int theme)
 {
    menu_theme = theme;
-}
+} // setMenuTheme
 
 int getMenuTheme()
 {
    return menu_theme;
-}
+} // getMenuTheme
