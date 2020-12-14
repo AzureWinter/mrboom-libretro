@@ -654,7 +654,7 @@ int numWinners()
    return total;
 }
 
-int setRoundsLimit(int limit)
+void setRoundsLimit(int limit)
 {
    m.roundsLimit = limit;
 }
