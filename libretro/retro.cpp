@@ -99,20 +99,20 @@ void retro_init(void)
    }
    std::vector <const retro_variable *> vars_systems;
    // Add the Global core options
-   vars_systems.push_back(&var_mrboom_teammode);
-   vars_systems.push_back(&var_mrboom_nomonster);
-   vars_systems.push_back(&var_mrboom_levelselect);
-   vars_systems.push_back(&var_mrboom_autofire);
-   vars_systems.push_back(&var_mrboom_aspect);
-   vars_systems.push_back(&var_mrboom_musicvolume);
-   vars_systems.push_back(&var_mrboom_sfxvolume);
-   vars_systems.push_back(&var_mrboom_roundslimit);
+   int NB_VARS_SYSTEMS = 0;
+   vars_systems.push_back(&var_mrboom_teammode); NB_VARS_SYSTEMS++;
+   vars_systems.push_back(&var_mrboom_nomonster); NB_VARS_SYSTEMS++;
+   vars_systems.push_back(&var_mrboom_levelselect); NB_VARS_SYSTEMS++;
+   vars_systems.push_back(&var_mrboom_autofire); NB_VARS_SYSTEMS++;
+   vars_systems.push_back(&var_mrboom_aspect); NB_VARS_SYSTEMS++;
+   vars_systems.push_back(&var_mrboom_musicvolume); NB_VARS_SYSTEMS++;
+   vars_systems.push_back(&var_mrboom_sfxvolume); NB_VARS_SYSTEMS++;
+   vars_systems.push_back(&var_mrboom_roundslimit); NB_VARS_SYSTEMS++;
 
-#define NB_VARS_SYSTEMS    8
    assert(vars_systems.size() == NB_VARS_SYSTEMS);
    // Add the System core options
    int idx_var = 0;
-   struct retro_variable vars[NB_VARS_SYSTEMS + 1];      // + 1 for the empty ending retro_variable
+   struct retro_variable vars[50 + 1];      // + 1 for the empty ending retro_variable
    for (i = 0; i < NB_VARS_SYSTEMS; i++, idx_var++)
    {
       vars[idx_var] = *vars_systems[i];
