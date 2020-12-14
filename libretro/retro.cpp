@@ -27,6 +27,7 @@ int libretro_sfx_volume = 50;
 static int team_mode = 0;
 static int noMonster_mode = 0;
 static int level_select = -1;
+static int menu_theme = 0;
 
 // Global core options
 static const struct retro_variable var_mrboom_teammode    = { "mrboom-teammode", "Team mode; Selfie|Color|Sex|Skynet" };
@@ -36,6 +37,7 @@ static const struct retro_variable var_mrboom_autofire    = { "mrboom-autofire",
 static const struct retro_variable var_mrboom_aspect      = { "mrboom-aspect", "Aspect ratio; Native|4:3|16:9" };
 static const struct retro_variable var_mrboom_musicvolume = { "mrboom-musicvolume", "Music volume; 100|0|5|10|15|20|25|30|35|40|45|50|55|60|65|70|75|80|85|90|95" };
 static const struct retro_variable var_mrboom_sfxvolume   = { "mrboom-sfxvolume", "Sfx volume; 50|55|60|65|70|75|80|85|90|95|100|0|5|10|15|20|25|30|35|40|45" };
+static const struct retro_variable var_mrboom_menutheme   = { "mrboom-menutheme", "Menu theme; Default|Normal|Christmas" };
 
 static const struct retro_variable var_empty = { NULL, NULL };
 
@@ -97,19 +99,20 @@ void retro_init(void)
    }
    std::vector <const retro_variable *> vars_systems;
    // Add the Global core options
-   vars_systems.push_back(&var_mrboom_teammode);
-   vars_systems.push_back(&var_mrboom_nomonster);
-   vars_systems.push_back(&var_mrboom_levelselect);
-   vars_systems.push_back(&var_mrboom_autofire);
-   vars_systems.push_back(&var_mrboom_aspect);
-   vars_systems.push_back(&var_mrboom_musicvolume);
-   vars_systems.push_back(&var_mrboom_sfxvolume);
+   int NB_VARS_SYSTEMS = 0;
+   vars_systems.push_back(&var_mrboom_teammode); NB_VARS_SYSTEMS++;
+   vars_systems.push_back(&var_mrboom_nomonster); NB_VARS_SYSTEMS++;
+   vars_systems.push_back(&var_mrboom_levelselect); NB_VARS_SYSTEMS++;
+   vars_systems.push_back(&var_mrboom_autofire); NB_VARS_SYSTEMS++;
+   vars_systems.push_back(&var_mrboom_aspect); NB_VARS_SYSTEMS++;
+   vars_systems.push_back(&var_mrboom_musicvolume); NB_VARS_SYSTEMS++;
+   vars_systems.push_back(&var_mrboom_sfxvolume); NB_VARS_SYSTEMS++;
+   vars_systems.push_back(&var_mrboom_menutheme); NB_VARS_SYSTEMS++;
 
-#define NB_VARS_SYSTEMS    7
    assert(vars_systems.size() == NB_VARS_SYSTEMS);
    // Add the System core options
    int idx_var = 0;
-   struct retro_variable vars[NB_VARS_SYSTEMS + 1];      // + 1 for the empty ending retro_variable
+   struct retro_variable vars[50 + 1];      // + 1 for the empty ending retro_variable
    for (i = 0; i < NB_VARS_SYSTEMS; i++, idx_var++)
    {
       vars[idx_var] = *vars_systems[i];
@@ -551,6 +554,27 @@ static void check_variables(void)
       if (var.value != err && errno == 0)
       {
          libretro_sfx_volume = val;
+      }
+   }
+   var.key = var_mrboom_menutheme.key;
+   if (environ_cb(RETRO_ENVIRONMENT_GET_VARIABLE, &var))
+   {
+      unsigned menu_theme_old = menu_theme;
+      if (strcmp(var.value, "Normal") == 0)
+      {
+         menu_theme = 1;
+      }
+      else if (strcmp(var.value, "Christmas") == 0)
+      {
+         menu_theme = 2;
+      }
+      else
+      {
+         menu_theme = 0;
+      }
+      if (menu_theme_old != menu_theme)
+      {
+         setMenuTheme(menu_theme);
       }
    }
 }
