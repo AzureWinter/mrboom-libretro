@@ -27,6 +27,7 @@ int libretro_sfx_volume = 50;
 static int team_mode = 0;
 static int noMonster_mode = 0;
 static int level_select = -1;
+static int rounds_limit = 5;
 
 // Global core options
 static const struct retro_variable var_mrboom_teammode    = { "mrboom-teammode", "Team mode; Selfie|Color|Sex|Skynet" };
@@ -36,6 +37,7 @@ static const struct retro_variable var_mrboom_autofire    = { "mrboom-autofire",
 static const struct retro_variable var_mrboom_aspect      = { "mrboom-aspect", "Aspect ratio; Native|4:3|16:9" };
 static const struct retro_variable var_mrboom_musicvolume = { "mrboom-musicvolume", "Music volume; 100|0|5|10|15|20|25|30|35|40|45|50|55|60|65|70|75|80|85|90|95" };
 static const struct retro_variable var_mrboom_sfxvolume   = { "mrboom-sfxvolume", "Sfx volume; 50|55|60|65|70|75|80|85|90|95|100|0|5|10|15|20|25|30|35|40|45" };
+static const struct retro_variable var_mrboom_roundslimit = { "mrboom-roundslimit", "Rounds limit; 5|1|2|3|4" };
 
 static const struct retro_variable var_empty = { NULL, NULL };
 
@@ -104,8 +106,9 @@ void retro_init(void)
    vars_systems.push_back(&var_mrboom_aspect);
    vars_systems.push_back(&var_mrboom_musicvolume);
    vars_systems.push_back(&var_mrboom_sfxvolume);
+   vars_systems.push_back(&var_mrboom_roundslimit);
 
-#define NB_VARS_SYSTEMS    7
+#define NB_VARS_SYSTEMS    8
    assert(vars_systems.size() == NB_VARS_SYSTEMS);
    // Add the System core options
    int idx_var = 0;
@@ -551,6 +554,19 @@ static void check_variables(void)
       if (var.value != err && errno == 0)
       {
          libretro_sfx_volume = val;
+      }
+   }
+   var.key = var_mrboom_roundslimit.key;
+   if (environ_cb(RETRO_ENVIRONMENT_GET_VARIABLE, &var))
+   {
+      char *err;
+      long val;
+
+      errno = 0;
+      val = strtol (var.value, &err, 10);
+      if (var.value != err && errno == 0)
+      {
+         setRoundsLimit(val);
       }
    }
 }
