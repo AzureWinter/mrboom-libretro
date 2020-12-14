@@ -70,6 +70,7 @@ build_script:
       git_merge disable_stats
       git_merge samples
       git_merge cleanup
+      git submodule update --init --recursive
 
       git_merge pause_button
       git_merge change_rules
