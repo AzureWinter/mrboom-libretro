@@ -572,6 +572,9 @@ bool mrboom_init()
       network_init_done = true;
    }
 #endif
+
+   setRoundsLimit(5);
+
    return(true);
 }
 
