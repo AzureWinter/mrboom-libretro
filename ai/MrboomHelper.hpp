@@ -162,6 +162,9 @@ void addTeamWin();
 
 bool isXmasPeriod();
 
+void setMenuTheme(int theme);
+int getMenuTheme();
+
 #ifdef __cplusplus
 }
 #endif
