@@ -819,7 +819,7 @@ void mrboom_sound(void)
             case 5: musics_index = 4; break;
             case 6: musics_index = 5; break;
             case 7: musics_index = 6; break;
-            case 8: musics_index = 3; break;
+            case 0: musics_index = 3; break;
             }
             musics_index += 2;
 
