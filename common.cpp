@@ -1273,15 +1273,27 @@ void mrboom_tick_ai()
 
 static void mrboom_hotpatch()
 {
-   static bool init = false;
-   if (init) {
-      return;
+   static int current_menu = -1;
+   static uint8_t normal_menu_raw[320*200];
+   static uint8_t normal_menu_pal[256*3];
+   
+   if (current_menu == -1) {
+      current_menu = 0;
+      memcpy(&normal_menu_pal, m.pal, 256*3);
+      memcpy(&normal_menu_raw, m.heap + 0x3e800, 320*200);
    }
-   init = true;
 
-   if (isXmasPeriod()) {
-      memcpy(m.pal, Menu_christmas, 256*3);
-      memcpy(m.heap + 0x3e800, Menu_christmas+256*3, 320*200);
+   if (current_menu != getMenuTheme()) {
+      current_menu = getMenuTheme();
+
+      if ((current_menu == 1) || (current_menu == 0 && !isXmasPeriod())) {
+         memcpy(m.pal, normal_menu_pal, 256*3);
+         memcpy(m.heap + 0x3e800, normal_menu_raw, 320*200);
+      }
+      if ((current_menu == 2) || (current_menu == 0 && isXmasPeriod())) {
+         memcpy(m.pal, Menu_christmas, 256*3);
+         memcpy(m.heap + 0x3e800, Menu_christmas+256*3, 320*200);
+      }
    }
 }
 
