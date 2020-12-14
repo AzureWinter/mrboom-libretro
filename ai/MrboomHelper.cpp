@@ -653,3 +653,8 @@ int numWinners()
    }
    return total;
 }
+
+int setRoundsLimit(int limit)
+{
+   m.roundsLimit = limit;
+}
