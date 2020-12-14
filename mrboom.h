@@ -3211,6 +3211,8 @@ db vgaRamPaddingAfter[VGARAM_SIZE];
 char *path;
 void *ramVideoPointer;
 void *ramCopyPointer;
+  
+db roundsLimit;
 } Memory;
 #pragma pack(pop)
 extern Memory m;
