@@ -161,6 +161,7 @@ bool sameTeamWin(int player);
 void addTeamWin();
 
 bool isXmasPeriod();
+void setRoundsLimit(int limit);
 
 #ifdef __cplusplus
 }
