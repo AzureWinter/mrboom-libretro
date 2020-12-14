@@ -74,6 +74,7 @@ build_script:
 
       git_merge pause_button
       git_merge change_rules
+      git_merge stage_music
       git_merge rounds_limit
 
       git_resolve menu_theme libretro/retro.cpp both
