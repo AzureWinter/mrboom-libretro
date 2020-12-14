@@ -72,7 +72,9 @@ build_script:
 
       git_merge pause_button
       git_merge change_rules
+
       git_merge rounds_limit
+      git_merge menu_theme
 
       cd libretro
       cd ..
