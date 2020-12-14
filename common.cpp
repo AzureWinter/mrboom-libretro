@@ -821,6 +821,7 @@ void mrboom_sound(void)
             case 6: musics_index = 6; break;
             case 7: musics_index = 3; break;
             }
+            printf("%d %d\n", currentLevel, musics_index);
             musics_index += 2;
 
             if (musics_index < 2)
