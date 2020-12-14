@@ -102,12 +102,12 @@ void retro_init(void)
    int NB_VARS_SYSTEMS = 0;
    vars_systems.push_back(&var_mrboom_teammode); NB_VARS_SYSTEMS++;
    vars_systems.push_back(&var_mrboom_nomonster); NB_VARS_SYSTEMS++;
+   vars_systems.push_back(&var_mrboom_roundslimit); NB_VARS_SYSTEMS++;
    vars_systems.push_back(&var_mrboom_levelselect); NB_VARS_SYSTEMS++;
    vars_systems.push_back(&var_mrboom_autofire); NB_VARS_SYSTEMS++;
    vars_systems.push_back(&var_mrboom_aspect); NB_VARS_SYSTEMS++;
    vars_systems.push_back(&var_mrboom_musicvolume); NB_VARS_SYSTEMS++;
    vars_systems.push_back(&var_mrboom_sfxvolume); NB_VARS_SYSTEMS++;
-   vars_systems.push_back(&var_mrboom_roundslimit); NB_VARS_SYSTEMS++;
 
    assert(vars_systems.size() == NB_VARS_SYSTEMS);
    // Add the System core options
