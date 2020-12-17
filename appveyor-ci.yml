@@ -63,4 +63,4 @@ build_script:
       swift build
 
       cd ../tools/asm
-      convertAssemblyToC.sh
+      ./convertAssemblyToC.sh
