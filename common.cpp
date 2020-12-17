@@ -800,7 +800,7 @@ void mrboom_sound(void)
          audio_mixer_voice_set_volume(voice, libretro_music_volume);
       }
 #endif
-      if (level() != currentLevel)
+      if ((inTheMenu() || isGameActive()) && (level() != currentLevel))
       {
          int index = 0; // default menu song
          currentLevel = level();
@@ -810,16 +810,15 @@ void mrboom_sound(void)
                index = 1;
             } 
          } else {
-            //musics_index = (musics_index + 1) % (NB_CHIPTUNES);
             switch (currentLevel) {
-            case 1: musics_index = 0; break;
-            case 2: musics_index = 1; break;
-            case 3: musics_index = 2; break;
-            case 4: musics_index = 3; break;
-            case 5: musics_index = 4; break;
-            case 6: musics_index = 5; break;
-            case 7: musics_index = 6; break;
-            case 0: musics_index = 3; break;
+            case 1: musics_index = 0; break;  // Candy (Chiptune)
+            case 2: musics_index = 1; break;  // Penguins (Matkamies)
+            case 3: musics_index = 2; break;  // Pink (Chipmunks)
+            case 4: musics_index = 3; break;  // Jungle (Unreeeal)
+            case 5: musics_index = 4; break;  // Board (Anarchy)
+            case 6: musics_index = 5; break;  // Soccer (External)
+            case 7: musics_index = 6; break;  // Sky (Estrayk)
+            case 0: musics_index = 3; break;  // Aliens (Unreeeal)
             }
             musics_index += 2;
 
