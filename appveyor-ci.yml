@@ -73,6 +73,7 @@ build_script:
       git_merge change_rules
       git_merge stage_music
       git_merge rounds_limit
+      git_merge random_monsters
 
       git_resolve menu_theme libretro/retro.cpp both
       git_modify ai/MrboomHelper.cpp both
