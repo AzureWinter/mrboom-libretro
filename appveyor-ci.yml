@@ -61,3 +61,6 @@ build_script:
       swift -version
       cd asm2c
       swift build
+
+      cd ../tools/asm
+      convertAssemblyToC.sh
