@@ -1,11 +1,3 @@
-#
-# Extract package to github folder
-#
-# - Make sure to upload archive separately first.
-# - Then run this script next.
-#
-
-
 image: macos
 
 
@@ -23,6 +15,12 @@ environment:
 
 
 
+artifacts:
+  - path: '**\*mrboom.c'
+  - path: '**\*mrboom.h'
+
+
+
 
 build_script:
 
@@ -31,10 +29,6 @@ build_script:
       if (${env:GIT_SCRIPT} -Eq $Null) {
         $env:GIT_SCRIPT = $env:APPVEYOR_REPO_COMMIT_AUTHOR
       }
-
-
-
-      # git reset --hard HEAD~1
 
 
 
