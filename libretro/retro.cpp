@@ -30,7 +30,7 @@ static int level_select = -1;
 
 // Global core options
 static const struct retro_variable var_mrboom_teammode    = { "mrboom-teammode", "Team mode; Selfie|Color|Sex|Skynet" };
-static const struct retro_variable var_mrboom_nomonster   = { "mrboom-nomonster", "Monsters; ON|OFF" };
+static const struct retro_variable var_mrboom_nomonster   = { "mrboom-nomonster", "Monsters; ON|OFF|Random" };
 static const struct retro_variable var_mrboom_levelselect = { "mrboom-levelselect", "Level select; Normal|Candy|Penguins|Pink|Jungle|Board|Soccer|Sky|Aliens|Random" };
 static const struct retro_variable var_mrboom_autofire    = { "mrboom-autofire", "Drop bomb autofire; OFF|ON" };
 static const struct retro_variable var_mrboom_aspect      = { "mrboom-aspect", "Aspect ratio; Native|4:3|16:9" };
@@ -286,7 +286,15 @@ static void set_game_options(void)
    if (inTheMenu() == true)
    {
       setTeamMode(team_mode);
-      setNoMonsterMode(noMonster_mode);
+      
+      if (noMonster_mode == 2)
+      {
+         setNoMonsterMode(frameNumber() % 2);
+      }
+      else
+      {
+         setNoMonsterMode(noMonster_mode);
+      }
 
       if (level_select >= 0)
       {
@@ -444,6 +452,10 @@ static void check_variables(void)
       if (strcmp(var.value, "OFF") == 0)
       {
          noMonster_mode = 1;
+      }
+      else if (strcmp(var.value, "Random") == 0)
+      {
+         noMonster_mode = 2;
       }
       else
       {
