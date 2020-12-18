@@ -270,10 +270,10 @@ public struct Instruction1Node: CustomStringConvertible {
             return "R(\(instruction)\(castOperand));\n"
         }
         if shouldPointExpression(expr: operand) {
-            if sizeDirective == "dword" {
+            if sizeDirective == .dword {
 				castOperand = "read_dd(realAddress(\(operand), \(selector)))" //TOFIX
 			}
-			else if sizeDirective == "word" {
+			else if sizeDirective == .word {
 				castOperand = "read_dw(realAddress(\(operand), \(selector)))" //TOFIX
 			}
 			else {
