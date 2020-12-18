@@ -1,7 +1,7 @@
 image: macos
 
 
-clone_depth: 50
+clone_depth: 1
 
 
 
