@@ -307,10 +307,10 @@ public struct Instruction2Node: CustomStringConvertible {
         }
         
         if shouldPointExpression(expr: lhs) {
-            if sizeDirectiveDest == "dword" {
+            if sizeDirectiveDest == .dword {
 				castLhs = "read_dd(realAddress(\(lhs), \(selector)))"
 			}
-			else if sizeDirectiveDest == "word" {
+			else if sizeDirectiveDest == .word {
 				castLhs = "read_dw(realAddress(\(lhs), \(selector)))"
 			}
 			else {
@@ -319,10 +319,10 @@ public struct Instruction2Node: CustomStringConvertible {
         }
         switch (rhs) {
         case is BraquetNode:
-            if sizeDirectiveSource == "dword" {
+            if sizeDirectiveSource == .dword {
 				castRhs = "read_dd(realAddress(\(rhs), \(selector)))"
 			}
-			else if sizeDirectiveSource == "word" {
+			else if sizeDirectiveSource == .word {
 				castRhs = "read_dw(realAddress(\(rhs), \(selector)))"
 			}
 			else {
@@ -335,10 +335,10 @@ public struct Instruction2Node: CustomStringConvertible {
             }
         default:
             if shouldPointExpression(expr: rhs) {
-				if sizeDirectiveDest == "dword" {
+				if sizeDirectiveDest == .dword {
 					castRhs = "read_dd(realAddress(\(rhs), \(selector)))"
 				}
-				else if sizeDirectiveDest == "word" {
+				else if sizeDirectiveDest == .word {
 					castRhs = "read_dw(realAddress(\(rhs), \(selector)))"
 				}
 				else {
