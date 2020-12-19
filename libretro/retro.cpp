@@ -27,7 +27,6 @@ int libretro_sfx_volume = 50;
 static int team_mode = 0;
 static int noMonster_mode = 0;
 static int level_select = -1;
-static int rounds_limit = 5;
 
 // Global core options
 static const struct retro_variable var_mrboom_teammode    = { "mrboom-teammode", "Team mode; Selfie|Color|Sex|Skynet" };
