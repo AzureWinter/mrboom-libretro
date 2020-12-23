@@ -8,7 +8,6 @@
 #include <errno.h>
 #include <time/rtime.h>
 
-#define WANT_BPP32 1
 #ifdef WANT_BPP32
 typedef uint32_t bpp_t;
 #else
