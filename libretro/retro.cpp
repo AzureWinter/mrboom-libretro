@@ -163,7 +163,7 @@ void retro_init(void)
       }
    }
 
-   frame_buf = (uint32_t *)calloc(WIDTH * HEIGHT, sizeof(uint32_t));
+   frame_buf = (bpp_t *)calloc(WIDTH * HEIGHT, sizeof(bpp_t));
 
    mrboom_init();
 
